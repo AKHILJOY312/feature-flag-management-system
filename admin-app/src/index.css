@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Roboto+Condensed:wght@100..900&family=Supermercado+One&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", sans-serif;
+  --font-condensed: "Roboto Condensed", sans-serif;
+  --font-logo: "Supermercado One", serif;
+
+  --color-bg: #eee0cc;
+  --color-surface: #ffffff;
+  --color-surface-soft: #fcf9f5;
+
+  --color-brand: #607456;
+  --color-brand-strong: #45543e;
+
+  --color-accent: #ba6a4c;
+
+  --color-text: #7b2525;
+  --color-muted: #8d523c;
+
+  --color-border: #dcd0be;
+}
+
+:root {
+  --ease-ui: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+
+    background: radial-gradient(
+      circle at top left,
+      #ffffff 0%,
+      #f7f2ea 45%,
+      #eee0cc 100%
+    );
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply mx-auto max-w-7xl px-4 py-6 md:px-8;
+  }
+
+  .logo-text {
+    font-family: var(--font-logo);
+    letter-spacing: 1px;
+  }
+
+  .card {
+    @apply rounded-3xl p-6;
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+
+    box-shadow:
+      0 10px 25px rgb(96 116 86 / 0.06),
+      0 4px 10px rgb(96 116 86 / 0.04);
+  }
+
+  .input {
+    @apply w-full rounded-xl px-4 py-3 outline-none;
+
+    background: white;
+    border: 1px solid var(--color-border);
+
+    transition:
+      border-color 180ms var(--ease-ui),
+      box-shadow 180ms var(--ease-ui);
+  }
+
+  .input:focus {
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 4px rgb(96 116 86 / 0.15);
+  }
+
+  .label {
+    @apply mb-2 block text-sm font-semibold;
+  }
+
+  .btn-primary {
+    @apply rounded-xl px-5 py-3 font-semibold text-white;
+
+    background: var(--color-brand);
+
+    transition:
+      transform 180ms var(--ease-ui),
+      background-color 180ms var(--ease-ui);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-brand-strong);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply rounded-xl px-4 py-2 font-medium text-white;
+
+    background: var(--color-accent);
+  }
+
+  .page-title {
+    @apply text-4xl font-bold;
+  }
+
+  .page-subtitle {
+    @apply mt-2 text-sm;
+    color: var(--color-muted);
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
+  }
+
+  .badge-success {
+    background: rgb(96 116 86 / 0.15);
+    color: #384532;
+  }
+
+  .badge-disabled {
+    background: rgb(141 82 60 / 0.12);
+    color: #70402e;
+  }
+
+  .error-text {
+    @apply mt-1 text-sm text-red-500;
+  }
+
+  .link-text {
+    color: var(--color-accent);
+  }
+
+  .link-text:hover {
+    opacity: 0.8;
+  }
+
+  .feature-grid {
+    @apply grid gap-4 md:grid-cols-2 xl:grid-cols-3;
+  }
+
+  .stat-number {
+    @apply text-3xl font-bold;
+    font-family: var(--font-condensed);
+    color: var(--color-brand);
+  }
+
+  .stat-label {
+    @apply text-sm;
+    color: var(--color-muted);
+  }
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
