@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Supermercado+One&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-logo: "Supermercado One", serif;
+
+  /* Integrated New Palette Configuration Mapping */
+  --color-bg: #fff4a4;
+  --color-surface: #ffffff;
+  --color-surface-soft: #fffdf0;
+
+  --color-brand: #f97a00;
+  --color-brand-strong: #c45f00;
+
+  --color-accent: #16610e;
+
+  --color-text: #16610e;
+  --color-muted: #3a7534;
+
+  --color-border: #fed16a;
+}
+
+:root {
+  --ease-ui: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+
+    /* Smooth light yellow radial backdrop gradient map */
+    background: radial-gradient(
+      circle at top left,
+      #ffffff 0%,
+      #fffbe3 45%,
+      #fff4a4 100%
+    );
+
+    color: var(--color-text);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply mx-auto min-h-screen w-full max-w-7xl px-4 py-6 md:px-8;
+  }
+
+  .logo-text {
+    font-family: var(--font-logo);
+    letter-spacing: 1px;
+  }
+
+  .card {
+    @apply rounded-3xl bg-surface p-6;
+
+    border: 1px solid var(--color-border);
+
+    box-shadow:
+      0 10px 25px rgb(249 122 0 / 0.05),
+      0 4px 10px rgb(249 122 0 / 0.03);
+  }
+
+  .card-hover {
+    transition:
+      transform 180ms var(--ease-ui),
+      box-shadow 180ms var(--ease-ui),
+      border-color 180ms var(--ease-ui);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 18px 32px rgb(249 122 0 / 0.08),
+      0 8px 16px rgb(249 122 0 / 0.05);
+  }
+
+  .input {
+    @apply w-full rounded-xl px-4 py-3 outline-none;
+
+    border: 1px solid var(--color-border);
+    background: white;
+
+    transition:
+      border-color 180ms var(--ease-ui),
+      box-shadow 180ms var(--ease-ui);
+  }
+
+  .input:focus {
+    border-color: var(--color-brand);
+
+    box-shadow: 0 0 0 4px rgb(249 122 0 / 0.15);
+  }
+
+  .label {
+    @apply mb-2 block text-sm font-semibold;
+    color: var(--color-text);
+  }
+
+  .btn-primary {
+    @apply rounded-xl px-5 py-3 font-semibold text-white;
+
+    background: var(--color-brand);
+
+    transition:
+      transform 180ms var(--ease-ui),
+      background-color 180ms var(--ease-ui),
+      box-shadow 180ms var(--ease-ui);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-brand-strong);
+    transform: translateY(-1px);
+
+    box-shadow: 0 10px 20px rgb(249 122 0 / 0.25);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-secondary {
+    @apply rounded-xl px-4 py-2 font-medium text-white;
+
+    background: var(--color-accent);
+
+    transition:
+      transform 180ms var(--ease-ui),
+      opacity 180ms var(--ease-ui);
+  }
+
+  .btn-secondary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .page-title {
+    @apply text-4xl font-bold;
+    color: var(--color-text);
+  }
+
+  .page-subtitle {
+    @apply mt-2 text-sm;
+    color: var(--color-muted);
+  }
+
+  .table-wrapper {
+    @apply overflow-hidden rounded-2xl;
+    border: 1px solid var(--color-border);
+  }
+
+  .table-header {
+    background: var(--color-surface-soft);
+  }
+
+  .table-row {
+    transition: background-color 180ms var(--ease-ui);
+  }
+
+  .table-row:hover {
+    background: rgb(249 122 0 / 0.05);
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
+  }
+
+  .badge-success {
+    background: rgb(22 97 14 / 0.15);
+    color: #16610e;
+  }
+
+  .badge-disabled {
+    background: rgb(249 122 0 / 0.12);
+    color: #8c4500;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--color-border);
+  }
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
